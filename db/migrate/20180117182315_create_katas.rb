@@ -1,6 +1,6 @@
-class CreateKata < ActiveRecord::Migration[5.1]
+class CreateKatas < ActiveRecord::Migration[5.1]
   def change
-    create_table :kata do |t|
+    create_table :katas do |t|
       t.string :title
       t.string :description
 
