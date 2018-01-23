@@ -1,8 +1,7 @@
 require 'rails_helper'
 require 'capybara'
 
-describe 'Kata' do
-	
+describe 'Kata' do	
 	it 'can be read jeje' do
 		kata_title = 'Second title'
 		kata_description = 'Second description'
@@ -11,6 +10,20 @@ describe 'Kata' do
 
 		visit root_path
 		click_on(kata_title)
+
+		expect(page).to have_content(kata_title)
+		expect(page).to have_content(kata_description)
+	end
+
+	it 'can be created' do
+		kata_title = 'Kata Sith'
+		kata_description = 'Kata kill'
+
+		visit root_path
+		click_on('New Kata')
+		fill_in(:title, with: kata_title)
+		fill_in(:description, with: kata_description)
+		click_on('Save')
 
 		expect(page).to have_content(kata_title)
 		expect(page).to have_content(kata_description)
