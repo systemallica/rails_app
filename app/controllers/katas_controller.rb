@@ -30,8 +30,11 @@ class KatasController < ApplicationController
 		kata = Kata.find(params[:id])
 		kata.title = params[:kata][:title] 
 		kata.description = params[:kata][:description]
-		kata.save
-		redirect_to kata_path(kata.id)
+		if kata.save
+			redirect_to kata_path(kata.id)
+		else
+			render :new
+		end
 	end
 
 	def delete
