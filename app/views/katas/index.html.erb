@@ -4,7 +4,8 @@
 	<% @katas.each do |kata| %>
 		<li>
 			<%= link_to(kata.title, kata_path(kata.id)) %>
-			- <%= link_to('Edit Kata', edit_katas_path(kata.id)) %>
+			- <%= link_to('Edit', edit_katas_path(kata.id)) %>
+			- <%= link_to('Delete', delete_katas_path(kata.id), method: :delete) %>
 		</li>
 	<% end %>
 </ul>

@@ -37,13 +37,24 @@ describe 'Kata' do
 		kata_description_u = 'Kata update desc'
 
 		visit root_path
-		click_on('Edit Kata')
+		click_on('Edit')
 		fill_in(:kata_title, with: kata_title_u)
 		fill_in(:kata_description, with: kata_description_u)
 		click_on('Save')
 
 		expect(page).to have_content(kata_title_u)
 		expect(page).to have_content(kata_description_u)
+	end
+
+	it 'can be deleted' do
+		kata_title = 'Second title'
+		kata_description = 'Second description'
+		create_kata(title: kata_title, description: kata_description)
+
+		visit root_path
+		click_on('Delete')
+
+		expect(page).to have_no_content(kata_title)
 	end
 
 	def create_kata(title: 'Kata title', description: 'May the force be with you')

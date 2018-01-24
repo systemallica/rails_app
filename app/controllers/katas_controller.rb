@@ -33,4 +33,11 @@ class KatasController < ApplicationController
 		kata.save
 		redirect_to kata_path(kata.id)
 	end
+
+	def delete
+		kata = Kata.find(params[:id])
+		kata.destroy
+
+		redirect_to root_path
+	end
 end
