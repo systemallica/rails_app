@@ -37,7 +37,7 @@ class KatasController < ApplicationController
 		end
 	end
 
-	def delete
+	def destroy
 		kata = Kata.find(params[:id])
 		kata.destroy
 
